@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { ApiQuiz, DevQuiz } from './Types/quizTypes';
+import './style/style.css';
 
 export default function App() {
   let [counter, setCounter] = useState<number>(-1);
@@ -30,18 +31,15 @@ export default function App() {
     getQuizAPI();
   }, [])
 
-  console.log(quiz)
-
-  
   function myFunction() {
-    setCounter(counter+1);
+    setCounter(counter + 1);
   }
   console.log(counter)
   if (counter == -1) {
     return <h1>Loading...</h1>
   }
-  if(counter == 10){
-    return(
+  if (counter == 10) {
+    return (
       <h1>Quiz End</h1>
     )
   }
@@ -53,23 +51,26 @@ export default function App() {
       if (selectedAnswer == question.correct_answer) {
         SetquizPoints(prev => prev + 1);
         SetselectedAnswer('');
-        setTimeout(myFunction, 1000);
+        setTimeout(myFunction, 500);
       }
       else {
         SetquizPoints(prev => prev + 0);
         console.log('Wrong Answer');
         SetselectedAnswer('');
-        setTimeout(myFunction, 3000);
+        setTimeout(myFunction, 500);
       }
     }
     return (
-      <div>
-        <h1 onClick={() => { console.log('1') }}>{quizPoints}/10</h1>
-        <h1>{question.question}</h1>
+      <div className='QuizContainer'>
+        <div className='Heading'>
+          <h1>Tech Quiz</h1>
+          <h1 onClick={() => { console.log('1') }}>{quizPoints}/10</h1>
+        </div>
+        <h2 className='Ques'>{`Q${counter+1} ${question.question}`}</h2>
         {
           question.options.map(ob => {
             return (
-              <button onClick={(e: any) => {
+              <button className='QuesBTN' onClick={(e: any) => {
                 e.preventDefault();
                 SetselectedAnswer(ob);
               }}>{ob}</button>
