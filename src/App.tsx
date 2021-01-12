@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { ApiQuiz, DevQuiz } from './Types/quizTypes';
 import './style/style.css';
+import tick from './image/tic.png';
+import cross from './image/cross.png';
+
 
 export default function App() {
   let [counter, setCounter] = useState<number>(-1);
@@ -35,20 +38,37 @@ export default function App() {
     setCounter(counter + 1);
   }
   console.log(counter)
-  if (counter == -1) {
+  if (counter === -1) {
     return <h1>Loading...</h1>
   }
-  if (counter == 10) {
-    return (
-      <h1>Quiz End</h1>
-    )
+  if (counter === 10) {
+    if(counter >= 6){
+      return (
+        <div className='PassQuizPage'>
+          <img src={tick} className='tickImage'/>
+          <h2>Congratulations You Passed the Quiz</h2>
+          <h3>Your Score: {quizPoints} out of 10</h3>
+          <a href='/'><button>Give Another Exam</button></a>
+        </div>
+      )
+    }
+    else{
+      return (
+        <div className='PassQuizPage'>
+          <img src={cross} className='tickImage'/>
+          <h2>Sorry, You are Fail in Quiz</h2>
+          <h3>Your Score: {quizPoints} out of 10</h3>
+          <a href='/'><button>Try Another Exam</button></a>
+        </div>
+      )
+    }
   }
   else {
     let question = quiz[counter];
-    if (selectedAnswer.length == 0) {
+    if (selectedAnswer.length === 0) {
     }
     else {
-      if (selectedAnswer == question.correct_answer) {
+      if (selectedAnswer === question.correct_answer) {
         SetquizPoints(prev => prev + 1);
         SetselectedAnswer('');
         setTimeout(myFunction, 500);
@@ -64,7 +84,7 @@ export default function App() {
       <div className='QuizContainer'>
         <div className='Heading'>
           <h1>Tech Quiz</h1>
-          <h1 onClick={() => { console.log('1') }}>{quizPoints}/10</h1>
+          <h1>{quizPoints}/10</h1>
         </div>
         <h2 className='Ques'>{`Q${counter+1} ${question.question}`}</h2>
         {

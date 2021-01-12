@@ -5,7 +5,7 @@ h1{
     margin: 0;
 }
 .QuizContainer{
-    background-color: aliceblue;
+    background-color: #f0f8ff;
     height: 90vh;
     padding: 30px 20px;
 }
@@ -27,4 +27,19 @@ h1{
 }
 .QuesBTN:hover{
     background-color: thistle;
+}
+.PassQuizPage{
+    text-align: center;
+    margin: 100px 0px;
+}
+.tickImage{
+    height: 50px;
+    width: 50px;
+}
+.PassQuizPage button{
+    padding: 8px 10px;
+    background-color: #f0f8ff;
+    border: none;
+    border-radius: 2px;
+    border: 1px solid black;
 }
