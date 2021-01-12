@@ -45,7 +45,7 @@ export default function App() {
     if(counter >= 6){
       return (
         <div className='PassQuizPage'>
-          <img src={tick} className='tickImage'/>
+          <img src={tick} alt='Success icon' className='tickImage'/>
           <h2>Congratulations You Passed the Quiz</h2>
           <h3>Your Score: {quizPoints} out of 10</h3>
           <a href='/'><button>Give Another Exam</button></a>
@@ -55,7 +55,7 @@ export default function App() {
     else{
       return (
         <div className='PassQuizPage'>
-          <img src={cross} className='tickImage'/>
+          <img src={cross} alt='Failed icon' className='tickImage'/>
           <h2>Sorry, You are Fail in Quiz</h2>
           <h3>Your Score: {quizPoints} out of 10</h3>
           <a href='/'><button>Try Another Exam</button></a>
