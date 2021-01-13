@@ -4,7 +4,8 @@ import { ApiQuiz, DevQuiz } from './Types/quizTypes';
 import './style/style.css';
 import tick from './image/tic.png';
 import cross from './image/cross.png';
-
+//@ts-ignore
+import Footer from '@bit/aslambaba.aslambaba-signatures.footer';
 
 export default function App() {
   let [counter, setCounter] = useState<number>(-1);
@@ -97,6 +98,7 @@ export default function App() {
             )
           })
         }
+        <Footer/>
       </div>
     )
   }
